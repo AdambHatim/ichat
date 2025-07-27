@@ -2,17 +2,17 @@ import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 
-interface ContactIconProps {
+export interface ContactIconProps {
   url: string;
   name: string;
   text: string;
 }
 const ContactIcon: React.FC<ContactIconProps> = ({url, name, text}) => {
   return (
-    <div className = 'absolute bg-white hover:bg-gray-100 w-60 flex flex-row gap-2 rounded-lg'>
+    <div className = ' bg-white hover:bg-gray-100 w-60 flex flex-row gap-2 rounded-lg'>
 
       {/* Avatar area */}
-    <div className = 'relative w-[20%] flex justify-center items-center'>
+    <div className = '  flex justify-center items-center'>
       <Avatar>
         <AvatarImage src= {url} />
         <AvatarFallback>CN</AvatarFallback>
@@ -22,7 +22,7 @@ const ContactIcon: React.FC<ContactIconProps> = ({url, name, text}) => {
      {/* Text area*/}
     <div>
     <div className='font-bold'>{name}</div>
-    <div className='text-gray-700'>{text}</div>
+    <div className='text-gray-700 text-sm'>{text}</div>
     </div>
     </div>
   )
