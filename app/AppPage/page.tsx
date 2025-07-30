@@ -17,11 +17,10 @@ const Discussions_variables: DiscussionsProps = {
 
 }
 const page = () => {
+
   return (
     <div className='flex w-full h-full py-7 pl-5'>
       <Discussions List_contacts={Contact_list} id_clicked={0} onClick={()=>{}}>
-
-
 
       </Discussions>
     </div>

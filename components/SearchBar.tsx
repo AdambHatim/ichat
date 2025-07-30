@@ -6,7 +6,12 @@ import {useState} from 'react'
 
 
 type WidthType = 'w-full space-x-2' | 'w-full';
-const SearchBarArrow = () => {
+
+interface SearchBarProps {
+  onChange: (stringEntered: string) => void
+  str_tapped: string;
+}
+const SearchBar: React.FC<SearchBarProps> = ({onChange, str_tapped}) => {
   const [length, setLength] = useState<WidthType>('w-full')
   const [isArrow, setIsArrow] = useState<boolean>(false)
 
@@ -31,11 +36,11 @@ const SearchBarArrow = () => {
 
       <div className = {`flex flex-row gap-2 p-2 bg-gray-100 rounded-full ${length}`} >
         <Search className = 'bg-gray-100 text-gray-500'/>
-        <input type="text" className = 'outline-none flex-1 bg-gray-100 w-full' onClick={()=>SearchBarClick()}></input>
+        <input type="text" className = 'outline-none flex-1 bg-gray-100 w-full' onClick={()=>SearchBarClick()} onChange={(e)=>onChange(e.target.value)} value={str_tapped}></input>
       </div>
 
     </div>
   )
 }
 
-export default SearchBarArrow
+export default SearchBar
