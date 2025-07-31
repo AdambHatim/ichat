@@ -8,16 +8,11 @@ import SearchBarArrow from './SearchBar'
 import { useState, useEffect } from 'react'
 import {ContactProps} from './Contacts'
 
-/* this is the final component for Discussions, he will be on the left of the page, as a prop he only takes your 
-Contacts, you will see a lot of discussions, when clicking on the search bar your contacts will appear, we
-also need to keep track of the contacts clicked, this should be a huge component that summarises all the ones 
-before
-*/
 
 export interface DiscussionsProps{
-    Contacts: ContactIconProps[];
-    id_clicked: number | false;
-    onClick: (id: number) => void;
+    List_contacts: ContactIconProps[];
+    id_clicked: number;
+    onClick: (contact: ContactIconProps) => void;
 }
 
 function WordsBeginStr(str: string, List_contacts:ContactIconProps[]){
@@ -26,13 +21,14 @@ function WordsBeginStr(str: string, List_contacts:ContactIconProps[]){
     const str_length:number = new_str.length
     for (const contacts of List_contacts){
       const name = contacts.name.toLowerCase()
-      if (name.length >= str_length && name.slice(0,str_length) === new_str){
+      if (name.length >= str_length && name.slice(0, str_length) === new_str){
           new_List_contacts.push(contacts)
       }
     }
     return new_List_contacts
 }
-const Discussions: React.FC<ContactProps> = ({List_contacts, id_clicked, onClick}) => {
+
+const Discussions: React.FC<DiscussionsProps> = ({List_contacts, id_clicked, onClick}) => {
   const [wordTapped, setWordTapped] = useState<string>('')
   const [contacts, setContacts] = useState<ContactIconProps[]>(List_contacts)
 

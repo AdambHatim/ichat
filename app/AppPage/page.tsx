@@ -3,21 +3,16 @@ import React, {useState, useEffect} from 'react'
 import Discussions, {DiscussionsProps} from '@/components/Discussions'
 import {Contact_list} from './const'
 import ChatArea from '@/components/ChatArea'
+import { ContactIconProps } from '@/components/ContactIcon'
 
 
-const onClick = (id:number) => {}
 
-const Discussions_variables: DiscussionsProps = {
-
-    Contacts: Contact_list,
-    id_clicked: 0,
-    onClick: onClick,
-
-}
 
 
 const page = () => {
-  const [isMobile, setIsMobile] = useState<boolean>(true)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [isDiscussions, setIsDiscussions] = useState<boolean>(true)
+
   useEffect(()=>{
     const handleSize = () => {
       setIsMobile(window.innerWidth < 768)
@@ -31,13 +26,22 @@ const page = () => {
 
 
   },[])
+
+
+  const [idClicked, setIdClicked] = useState<number>(0)
+  const onClick = (contact: ContactIconProps) => {
+        setIdClicked(contact.id)
+  }
   return (
-    <div className='flex w-full h-full py-7 pl-5'>
-        {isMobile ? 
-        <ChatArea/> :
-        <div>
-        <Discussions List_contacts={Contact_list} id_clicked={0} onClick={()=>{}} /> 
-        <ChatArea />
+    <div className='flex w-full h-full py-7 px-5'>
+        {isMobile && isDiscussions ? (
+        <Discussions List_contacts={Contact_list} id_clicked={idClicked} onClick={onClick} />
+        ): isMobile && isDiscussions === false ?(
+          <ChatArea />
+        ):
+        <div className = 'flex flex-row w-full h-full space-x-5'>
+        <Discussions List_contacts={Contact_list} id_clicked={idClicked} onClick={onClick} /> 
+        <ChatArea/>
         </div>
         }
 

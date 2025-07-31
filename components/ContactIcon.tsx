@@ -11,7 +11,7 @@ export interface ContactIconProps {
 
 const ContactIcon: React.FC<ContactIconProps> = ({id, url, name, text}) => {
   return (
-    <div className = 'bg-white hover:bg-gray-100 w-full px-3 py-2 rounded-xl flex flex-row gap-2'>
+    <div className = 'hover:bg-gray-100 w-full px-3 py-2 rounded-xl flex flex-row gap-2'>
 
       {/* Avatar area */}
     <div>
