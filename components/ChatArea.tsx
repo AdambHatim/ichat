@@ -2,7 +2,7 @@ import React from 'react'
 import UpperPartChat from './UpperPartChat'
 import Chat from './Chat'
 import {message} from './Chat'
-
+import BottomPartChat from './BottomPartChat'
 const Conversation: message[] = [
   { isItYou: false, message: "Hey! Long time no see 👋" },
   { isItYou: true, message: "Hey! Yeah, it's been a while 😅" },
@@ -24,6 +24,7 @@ const ChatArea = () => {
     <div className = 'w-full h-full bg-white rounded-xl'>
         <UpperPartChat isMobile = {false} isPopUpScreen = {false} />
         <Chat Conversation={Conversation}/>
+        <BottomPartChat />
     </div>
   )
 }

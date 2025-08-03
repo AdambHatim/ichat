@@ -16,7 +16,7 @@ interface ChatProps{
 
 const Chat: React.FC<ChatProps> = ({Conversation}) => {
   return (
-    <div className = "w-full md:h-[400px] bg-[url('/chat-bg.png')] bg-repeat bg-cover bg-white px-10 py-3 overflow-y-scroll">
+    <div className = "w-full md:h-[400px] bg-repeat bg-cover bg-white px-10 py-3 overflow-y-scroll">
         {Conversation.map((message, index) => (
             (message.isItYou === true) ?
               <div key={index} className='flex justify-end'>
@@ -26,7 +26,6 @@ const Chat: React.FC<ChatProps> = ({Conversation}) => {
                 <TextMessage text = {message.message} color = "bg-white" />
               </div>
               )
-              
             )}
     </div>
   )

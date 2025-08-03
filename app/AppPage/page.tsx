@@ -6,9 +6,6 @@ import ChatArea from '@/components/ChatArea'
 import { ContactIconProps } from '@/components/ContactIcon'
 
 
-
-
-
 const page = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false)
   const [isDiscussions, setIsDiscussions] = useState<boolean>(false)
